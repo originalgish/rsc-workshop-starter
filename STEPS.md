@@ -319,6 +319,9 @@
 
 ### Slides: TASK 2
 
+- Vise egen: auto scroll og all datahenting er med await, blanding av server og client, fake bruker vise
+- Schema er klart, vise
+
 ### Show: TASK 2 Solution
 
 - Component composition, data fetching
