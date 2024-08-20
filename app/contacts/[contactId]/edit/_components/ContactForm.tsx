@@ -22,7 +22,7 @@ export default function ContactForm({ contactId }: { contactId: string }) {
 
   return (
     <form className="flex max-w-[40rem] flex-col gap-4 @container">
-      <div className="grip-rows-6 grid grid-cols-1 gap-2 @sm:grid-cols-[1fr_4fr] @sm:gap-4">
+      <div className="grip-rows-6 grid grid-cols-1 items-center gap-2 @sm:grid-cols-[1fr_4fr] @sm:gap-4">
         <span className="flex">Name</span>
         <div className="flex gap-4">
           <Input
@@ -53,7 +53,9 @@ export default function ContactForm({ contactId }: { contactId: string }) {
           placeholder="https:// media.licdn.com/dms/image/example"
           type="text"
         />
-        <label htmlFor="notes">Notes</label>
+        <label className="self-start" htmlFor="notes">
+          Notes
+        </label>
         <TextArea className="grow" defaultValue={contact.notes || undefined} name="notes" rows={6} />
       </div>
       <div className="flex gap-2 self-end">
