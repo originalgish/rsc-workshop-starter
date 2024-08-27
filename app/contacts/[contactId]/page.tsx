@@ -28,8 +28,8 @@ export default function ContactPage({ params }: PageProps) {
 
   return (
     <div className="flex flex-col gap-4 lg:flex-row">
-      <div>
-        {contact.avatar && (
+      {contact.avatar && (
+        <div className="flex-shrink-0">
           <Image
             priority
             width={192}
@@ -39,9 +39,8 @@ export default function ContactPage({ params }: PageProps) {
             key={contact.avatar}
             src={contact.avatar}
           />
-        )}
-      </div>
-
+        </div>
+      )}
       <div className="flex flex-col gap-2">
         <h1 className="flex-start flex items-center gap-4 text-3xl font-bold">
           {contact.first || contact.last ? (
@@ -50,21 +49,18 @@ export default function ContactPage({ params }: PageProps) {
             </>
           ) : (
             <i>No Name</i>
-          )}{' '}
+          )}
           <Favorite contact={contact} />
         </h1>
-
-        {contact.position ? <p className="text-2xl">{contact.position}</p> : null}
-
-        {contact.email ? (
+        {contact.position && <p className="text-2xl">{contact.position}</p>}
+        {contact.email && (
           <p className="text-xl">
             <a href={'mailto:' + contact.email} className="no-underline hover:underline">
               {contact.email}
             </a>
           </p>
-        ) : null}
-
-        {contact.github ? (
+        )}
+        {contact.github && (
           <div className="flex items-center gap-2">
             <div>
               <Image width={16} height={16} src={GithubLogo} alt="Github logo" />
@@ -75,10 +71,8 @@ export default function ContactPage({ params }: PageProps) {
               </a>
             </p>
           </div>
-        ) : null}
-
-        {contact.notes ? <p>{contact.notes}</p> : null}
-
+        )}
+        {contact.notes && <div className="max-h-[300px] w-full overflow-auto 2xl:w-1/2">{contact.notes}</div>}
         <div className="my-4 flex gap-2">
           <LinkButton theme="secondary" href={`/contacts/${params.contactId}/edit`}>
             Edit
