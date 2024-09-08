@@ -62,10 +62,10 @@
 
 ### App: code all data fetching
 
-- Fetch data in contactList: getContacts inside lib/services
+- Fetch data in contactList: getContacts inside data/services
 - Nevne setup her, kan ha 1 fil for hver “feature” osv, smak og behag
 - Nevne server-only
-- Fetch data in contact page: getContact inside lib/services
+- Fetch data in contact page: getContact inside data/services
 - Fetch data in edit contact page
 - Discuss composability and compare with React Query
 - Show excalidraw, cache functions
