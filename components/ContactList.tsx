@@ -20,7 +20,7 @@ export default function ContactList() {
   ];
 
   return (
-    <nav className="min-h-48 flex-1 overflow-auto px-8 py-4">
+    <nav className="flex-1 overflow-auto px-8 py-4">
       {contacts.length ? (
         <ul>
           {contacts.map(contact => {
