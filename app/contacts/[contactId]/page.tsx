@@ -6,12 +6,14 @@ import Favorite from './_components/Favorite';
 import type { Contact } from '@prisma/client';
 
 type PageProps = {
-  params: {
+  params: Promise<{
     contactId: string;
-  };
+  }>;
 };
 
-export default function ContactPage({ params }: PageProps) {
+export default async function ContactPage({ params }: PageProps) {
+  const contactId = (await params).contactId;
+
   const contact: Contact = {
     avatar: '',
     createdAt: new Date(),
@@ -19,7 +21,7 @@ export default function ContactPage({ params }: PageProps) {
     favorite: true,
     first: 'John',
     github: 'johndoe',
-    id: params.contactId,
+    id: contactId,
     last: 'Doe',
     notes: 'This is a note.',
     position: 'Software Engineer',
@@ -74,7 +76,7 @@ export default function ContactPage({ params }: PageProps) {
         )}
         {contact.notes && <div className="max-h-[300px] w-full overflow-auto 2xl:w-1/2">{contact.notes}</div>}
         <div className="my-4 flex gap-2">
-          <LinkButton theme="secondary" href={`/contacts/${params.contactId}/edit`}>
+          <LinkButton theme="secondary" href={`/contacts/${contactId}/edit`}>
             Edit
           </LinkButton>
           <Button type="submit" theme="destroy">
