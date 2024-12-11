@@ -28,10 +28,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <div className="flex items-center gap-2 border-b border-gray px-8 py-4">
               <Suspense>
                 <Search />
-                <Button type="submit" theme="secondary">
-                  New
-                </Button>
               </Suspense>
+              <Button type="submit" theme="secondary">
+                New
+              </Button>
             </div>
             <ContactList />
             <div className="m-0 hidden flex-row items-center gap-2 border-t border-t-gray px-8 py-4 font-medium sm:flex">
