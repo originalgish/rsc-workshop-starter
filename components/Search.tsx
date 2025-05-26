@@ -1,12 +1,14 @@
 'use client';
 
-import { useSearchParams } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
+import { useTransition } from 'react';
 import { SearchIcon, SpinnerIcon } from './ui/icons';
 
 export default function Search() {
-  const searching = false;
   const searchParams = useSearchParams();
   const q = searchParams.get('q') || '';
+  const router = useRouter();
+  const [isPending, startTransition] = useTransition();
 
   return (
     <form role="search">
@@ -17,9 +19,14 @@ export default function Search() {
         defaultValue={q}
         placeholder="Search"
         type="search"
+        onChange={event => {
+          startTransition(() => {
+            router.push(`?q=${encodeURIComponent(event.target.value)}`);
+          });
+        }}
       />
       <div aria-hidden="true" className="absolute left-10 top-7">
-        {searching ? (
+        {isPending ? (
           <div className="h-fit w-fit animate-spin">
             <SpinnerIcon width={16} height={16} className="text-gray-dark" />
           </div>
