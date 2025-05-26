@@ -1,7 +1,8 @@
 import React from 'react';
-import Button from '@/components/ui/Button';
+
 import Input from '@/components/ui/Input';
 import LinkButton from '@/components/ui/LinkButton';
+import SubmitButton from '@/components/ui/SubmitButton';
 import TextArea from '@/components/ui/TextArea';
 
 import { updateContact } from '@/data/actions/updateContact';
@@ -52,9 +53,7 @@ export default async function ContactForm({ contactId }: { contactId: string }) 
         <LinkButton theme="secondary" href={`/contacts/${contactId}`}>
           Cancel
         </LinkButton>
-        <Button theme="primary" type="submit">
-          Save
-        </Button>
+        <SubmitButton theme="primary">Save</SubmitButton>
       </div>
     </form>
   );

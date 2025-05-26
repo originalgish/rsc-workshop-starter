@@ -6,8 +6,8 @@ import Link from 'next/link';
 import { Suspense } from 'react';
 import ContactList from '@/components/ContactList';
 import Search from '@/components/Search';
-import Button from '@/components/ui/Button';
 
+import SubmitButton from '@/components/ui/SubmitButton';
 import { createEmptyContact } from '@/data/actions/createEmptyContact';
 import { getContacts } from '@/data/services/getContacts';
 import Logo from '@/public/next-js.svg';
@@ -35,9 +35,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
                 <Search />
               </Suspense>
               <form action={createEmptyContact}>
-                <Button type="submit" theme="secondary">
-                  New
-                </Button>
+                <SubmitButton theme="secondary">New</SubmitButton>
               </form>
             </div>
             <ContactList contacts={contacts} />
