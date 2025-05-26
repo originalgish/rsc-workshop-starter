@@ -1,13 +1,22 @@
 'use client';
 
-export const ClientComponent = ({ content, children }: { content: React.ReactNode; children: React.ReactNode }) => {
+export const ClientComponent = ({
+  content,
+  children,
+  mutateData,
+}: {
+  content: React.ReactNode;
+  children: React.ReactNode;
+  mutateData: () => Promise<string>;
+}) => {
   return (
     <div className="rounded border-2 border-blue-500 p-4">
       {children}
       {content}
       <button
-        onClick={() => {
-          return alert('123');
+        onClick={async () => {
+          const result = await mutateData();
+          return alert(result);
         }}
       >
         Click me
